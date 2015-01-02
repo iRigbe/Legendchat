@@ -89,8 +89,11 @@ public class ChannelUtils {
 			return;
 		}
 		if(Legendchat.getMuteManager().isServerMuted()) {
-			sender.sendMessage(Legendchat.getMessageManager().getMessage("mute_error8"));
-			return;
+		if(sender.hasPermission("legendchat.muteallspeak") || sender.hasPermission("legendchat.admin")) {
+			} else {
+				sender.sendMessage(Legendchat.getMessageManager().getMessage("mute_error8"));
+				return;
+			}
 		}
 		if(Legendchat.getIgnoreManager().hasPlayerIgnoredChannel(sender, c)) {
 			sender.sendMessage(Legendchat.getMessageManager().getMessage("error14"));
